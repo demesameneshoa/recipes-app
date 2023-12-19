@@ -1,32 +1,40 @@
 require 'rails_helper'
 
-RSpec.describe 'foods/index', type: :view do
-  before(:each) do
-    assign(:foods, [
-             Food.create!(
-               name: 'Name',
-               measurement_unit: 'Measurement Unit',
-               price: '9.99',
-               quantity: 2,
-               user: nil
-             ),
-             Food.create!(
-               name: 'Name',
-               measurement_unit: 'Measurement Unit',
-               price: '9.99',
-               quantity: 2,
-               user: nil
-             )
-           ])
-  end
+RSpec.describe 'Foods', type: :system do
+  it 'displays a list of foods or a message if empty' do
+    new_user = create(:user)
 
-  it 'renders a list of foods' do
-    render
-    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
-    assert_select cell_selector, text: Regexp.new('Name'.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new('Measurement Unit'.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new('9.99'.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(2.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(nil.to_s), count: 2
+    visit new_user_session_path
+
+    fill_in 'Email', with: new_user.email
+    fill_in 'Password', with: new_user.password
+
+    click_button 'Log in'
+
+    create(:food, name: 'Pizza', measurement_unit: 'kg', price: 10.99, quantity: 5, user: new_user)
+    create(:food, name: 'Salad', measurement_unit: 'g', price: 5.5, quantity: 10, user: new_user)
+
+    visit foods_path
+
+    within('#foods', wait: 5) do
+      expect(page).to have_link('New food', href: new_food_path)
+
+      expect(page).to have_selector('.p-2 a.btn', text: 'New food')
+
+      if Food.all.empty?
+        expect(page).to have_selector('.alert.alert-info', text: 'There are no foods in your inventory.')
+      else
+        expect(page).to have_selector('table')
+        expect(page).to have_selector('thead th', text: 'Food')
+        expect(page).to have_selector('thead th', text: 'Measurement unit')
+        expect(page).to have_selector('thead th', text: 'Unit Price')
+        expect(page).to have_selector('thead th', text: 'Quantity')
+        expect(page).to have_selector('thead th', text: 'Actions')
+
+        expect(page).to have_selector('tbody tr', count: 2) # Assuming there are two food items created
+        expect(page).to have_content('Pizza')
+        expect(page).to have_content('Salad')
+      end
+    end
   end
 end
