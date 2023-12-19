@@ -2,7 +2,7 @@
   <td><%= food.name %></td>
   <td><%= food.measurement_unit %></td>
   <td><%= "$#{food.price}" %></td>
-  <td><%= food.quantity %></td>
+  <td><%= "#{food.quantity}#{food.measurement_unit}" %></td>
   <td><%= button_to "Delete", food,
                     method: :delete,
                     class: "btn btn-outline-danger px-2 py-1" %></td>
