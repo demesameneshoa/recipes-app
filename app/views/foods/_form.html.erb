@@ -18,11 +18,12 @@
                         class: "form-control mb-2" %>
   </div>
 
-  <div class="field">
-    <%= form.text_field :measurement_unit,
-                        placeholder: "Measurement unit",
-                        aria: { label: "Measurement unit" },
-                        class: "form-control mb-2" %>
+ <div class="field">
+    <%= form.select :measurement_unit,
+                    options_for_select(["g", "ml", "unit"]),
+                    { prompt: "Select Measurement Unit" },
+                    aria: { label: "Measurement unit" },
+                    class: "form-control mb-2" %>
   </div>
 
   <div class="field">
