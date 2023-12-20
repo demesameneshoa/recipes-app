@@ -1,32 +1,42 @@
-<div id="<%= dom_id recipe %>">
-  <p>
-    <strong>Name:</strong>
-    <%= recipe.name %>
-  </p>
+<div id="<%= dom_id recipe %>" class="m-2">
+<h2 class="text-center text-muted">
+  <%= recipe.name %>
+</h2>
+<div class="d-flex justify-content-around p-4" 
+          style="max-width: 800px; margin: 0 auto;">
+  <div>
+    <p>
+      <strong>Preparation time:</strong>
+      <%= recipe.preparation_time %>
+    </p>
 
-  <p>
-    <strong>Preparation time:</strong>
-    <%= recipe.preparation_time %>
-  </p>
+    <p>
+      <strong>Cooking time:</strong>
+      <%= recipe.cooking_time %>
+    </p>
 
-  <p>
-    <strong>Cooking time:</strong>
-    <%= recipe.cooking_time %>
-  </p>
+    <p>
+      <details>
+        <summary>Description:</summary>
+        <p> <%= recipe.description %> </p>
+      </details>
+    </p>
+  </div>
+    
+  <div>
+    <%= form_with(model: recipe) do |form| %>
+      <div class="custom-control custom-switch">
+        <%= form.check_box :public, class: "custom-control-input",
+                                    id: "publicswitch", onchange: "submitForm(this);" %>
+        <label class="custom-control-label" for="publicswitch"> Public: </label>  
+      </div>
+    <% end %>
 
-  <p>
-    <strong>Description:</strong>
-    <%= recipe.description %>
-  </p>
-
-  <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= recipe.user_id %>
-  </p>
-
+    <script>
+      function submitForm(checkbox) {
+        checkbox.form.submit();
+      }
+    </script>
+  </div>
+</div>
 </div>
