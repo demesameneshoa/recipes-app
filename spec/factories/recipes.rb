@@ -5,6 +5,6 @@ FactoryBot.define do
     cooking_time { 1 }
     description { 'MyText' }
     public { false }
-    user { nil }
+    user { create(:user) }
   end
 end
