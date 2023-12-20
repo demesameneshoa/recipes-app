@@ -1,9 +1,11 @@
+require 'faker'
+
 FactoryBot.define do
   factory :food do
-    name { 'MyString' }
-    measurement_unit { 'MyString' }
-    price { '9.99' }
+    name { Faker::Food.ingredient }
+    measurement_unit { 'kg' }
+    price { 1.5 }
     quantity { 1 }
-    user { nil }
+    user { create(:user) }
   end
 end
