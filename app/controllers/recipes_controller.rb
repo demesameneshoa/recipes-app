@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
- # uncomment the below line to enable authentication on the public recipes page
- # public pages will be only visible across loggd in user and not to the public
- # before_action :authenticate_user! 
+  # uncomment the below line to enable authentication on the public recipes page
+  # public pages will be only visible across loggd in user and not to the public
+  # before_action :authenticate_user!
   before_action :set_recipe, only: %i[show edit update destroy]
 
   # GET /recipes or /recipes.json
