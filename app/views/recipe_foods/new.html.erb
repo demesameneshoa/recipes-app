@@ -1,0 +1,20 @@
+<h1 id = "form-title", class = "text-center text-muted m-2">Add new Food to Recipe</h1>
+<%= form_with(model: [@recipe_food], url: recipe_foods_path)  do |form| %>
+  <div class="d-flex justify-content-center gap-2 w-100">
+    <div class="field">
+      <%= form.hidden_field :recipe_id, value: @recipe_id %>
+    </div>
+    <div class="field">
+      <%= form.label :name %><br>
+      <%= form.collection_select(:food_id, Food.all, :id, :name, { prompt: "Select a Food" }, { class: "form-select" }) %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :quantity %><br>
+      <%= form.number_field :quantity, autofocus: true, autocomplete: "quantity", placeholder: "Quantity" %>
+    </div>
+    <div class="text-center">
+      <%= form.submit 'Add Food to Recipe', class: "btn btn-primary mt-3"%>
+    </div>
+  </div>
+<% end %>
