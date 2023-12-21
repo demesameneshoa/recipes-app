@@ -59,11 +59,18 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
-    @recipe.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
-      format.json { head :no_content }
+    begin
+      @recipe.destroy!
+      # Delete associated recipe_foods
+      @recipe.recipe_foods.destroy_all
+  
+      respond_to do |format|
+        format.html { redirect_to recipes_url, notice: 'Recipe was successfully deleted.' }
+        format.json { head :no_content }
+      end
+    rescue ActiveRecord::InvalidForeignKey => e
+      # Handle the foreign key violation
+      redirect_to recipes_url, alert: 'Recipe was not deleted. There are associated ingredients.'
     end
   end
 
