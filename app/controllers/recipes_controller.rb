@@ -1,4 +1,7 @@
 class RecipesController < ApplicationController
+  # uncomment the below line to enable authentication on the public recipes page
+  # public pages will be only visible across loggd in user and not to the public
+  # before_action :authenticate_user!
   before_action :set_recipe, only: %i[show edit update destroy]
 
   # GET /recipes or /recipes.json
@@ -11,7 +14,10 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
+    @recipe_food = @recipe.recipe_foods.includes(:food)
+  end
 
   # GET /recipes/new
   def new
@@ -53,9 +59,11 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
     @recipe.destroy!
+    # Delete associated recipe_foods
+    @recipe.recipe_foods.destroy_all
 
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to recipes_url, notice: 'Recipe was successfully deleted.' }
       format.json { head :no_content }
     end
   end
