@@ -28,7 +28,7 @@ RSpec.describe 'recipes/index', type: :system do
         expect(page).to have_selector('.alert.alert-info', text: 'There are no recipes to show.')
       else
         expect(page).to have_selector('ul')
-        expect(page).to have_selector('p', text: 'Recipe')
+        expect(page).to have_selector('h4', text: 'Recipe')
         expect(page).to have_selector('p', text: 'Name')
         expect(page).to have_selector('p', text: 'Pizza')
         expect(page).to have_selector('p', text: 'Salad')
