@@ -24,6 +24,7 @@
   </div>
     
   <div>
+  <% if recipe.user == current_user %>
     <%= form_with(model: recipe) do |form| %>
       <div class="custom-control custom-switch">
         <%= form.check_box :public, class: "custom-control-input",
@@ -31,7 +32,7 @@
         <label class="custom-control-label" for="publicswitch"> Public: </label>  
       </div>
     <% end %>
-
+  <% end %>
     <script>
       function submitForm(checkbox) {
         checkbox.form.submit();
