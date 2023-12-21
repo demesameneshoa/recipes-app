@@ -2,7 +2,7 @@
 <%= render @recipe %>
 
 <div class="d-flex justify-content-around p-3 m-1">
-  <button>Generate Shopping list</button>
+  <%= link_to "Generate shopping list", shopping_list_path, method: :get, class: "btn btn-outline-success" %>
   <% if @recipe.user == current_user %>
     <%= link_to "Add ingredient", new_recipe_food_path(recipe_id: @recipe.id), class: "btn btn-outline-success" %>
   <% end %>
@@ -32,7 +32,7 @@
           <tr>
             <td><%= ingredient.food.name %></td>
             <td><%= "#{ingredient.quantity}#{ingredient.food.measurement_unit}" %></td>
-            <td><%= "$#{ingredient.food.price*ingredient.quantity}" %></td>
+            <td><%= "$#{ingredient.food.price * ingredient.quantity}" %></td>
             <% if @recipe.user == current_user %>
               <td><%= link_to "Modify", edit_recipe_food_path(ingredient), class: "btn btn-ountline-danger", method: :update, data: { "turbo-method": :update } %></td>
               <td><%= link_to "Delete", ingredient, class: "btn btn-ountline-danger", method: :delete, data: { "turbo-method": :delete } %></td>
