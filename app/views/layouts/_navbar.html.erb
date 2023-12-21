@@ -12,17 +12,11 @@
                 </li>
 
                 <% if user_signed_in? %>
-
-                <% # ! UPDATE THE LINKS BELOW TO POINT TO THE CORRECT PATHS %>
-
                     <li class="nav-item">
                         <%= link_to "My-recipes", recipes_path, class: "nav-link" %>
                     </li>
                     <li class="nav-item">
                         <%= link_to "Food-List", foods_path, class: "nav-link" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Shopping-list", root_path, class: "nav-link" %>
                     </li>
                 <% end %>
             </ul>
