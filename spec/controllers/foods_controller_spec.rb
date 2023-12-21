@@ -4,7 +4,7 @@ RSpec.describe FoodsController, type: :controller do
   include Devise::Test::ControllerHelpers
 
   let(:user) { FactoryBot.create(:user) }
-  let(:food) { FactoryBot.create(:food, user: user) }
+  let(:food) { FactoryBot.create(:food, user:) }
 
   before do
     sign_in user
@@ -49,9 +49,9 @@ RSpec.describe FoodsController, type: :controller do
   describe 'POST #create' do
     context 'with valid parameters' do
       it 'creates a new Food' do
-        expect {
+        expect do
           post :create, params: { food: FactoryBot.attributes_for(:food) }
-        }.to change(Food, :count).by(1)
+        end.to change(Food, :count).by(1)
       end
 
       it 'redirects to the index page' do
@@ -62,9 +62,9 @@ RSpec.describe FoodsController, type: :controller do
 
     context 'with invalid parameters' do
       it 'does not create a new Food' do
-        expect {
+        expect do
           post :create, params: { food: FactoryBot.attributes_for(:food, name: nil) }
-        }.not_to change(Food, :count)
+        end.not_to change(Food, :count)
       end
 
       it 'renders the new template' do

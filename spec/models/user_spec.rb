@@ -17,8 +17,8 @@ RSpec.describe User, type: :model do
   describe 'associations' do
     it 'has many recipes' do
       user = create(:user)
-      recipe1 = create(:recipe, user: user)
-      recipe2 = create(:recipe, user: user)
+      recipe1 = create(:recipe, user:)
+      recipe2 = create(:recipe, user:)
 
       expect(user.recipes).to include(recipe1, recipe2)
     end
