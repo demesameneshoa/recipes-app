@@ -1,50 +1,52 @@
-<h2 class="text-center font-weight-bold mt-4">
-    <span class="text-danger">Your</span>
-    <span class="text-warning">Shopping List</span>
-</h2>
-<div class="d-flex justify-content-around flex-wrap m-2 mt-3 mb-3">
-    <p class="p-2">
-    <strong>
-        Amount of food items to buy: 
-            <span class="text-success">
-                <%= @items_to_buy.count %>
-            </span>
-    <strong>    
-    </p>
-    <p class="p-2">
-    <strong>
-        Total value of food needed: 
-            <span class="text-danger">
-                $<%= @items_to_buy.sum { |item| item[:quantity] * item[:unit_price] } %>
-            </span>
-    </strong>
-    </p>
-</div>
-
-<div id="foods">
-    <% if @items_to_buy.empty? %>
-    <div class="alert alert-info text-center">
-    <p class="mb-0">There are no items to buy yet...</p>
+<div id= "shopping-list">
+    <h2 class="text-center font-weight-bold mt-4">
+        <span class="text-danger">Your</span>
+        <span class="text-warning">Shopping List</span>
+    </h2>
+    <div class="d-flex justify-content-around flex-wrap m-2 mt-3 mb-3">
+        <p class="p-2">
+        <strong>
+            Amount of food items to buy: 
+                <span class="text-success">
+                    <%= @items_to_buy.count %>
+                </span>
+        <strong>    
+        </p>
+        <p class="p-2">
+        <strong>
+            Total value of food needed: 
+                <span class="text-danger">
+                    $<%= @items_to_buy.sum { |item| item[:quantity] * item[:unit_price] } %>
+                </span>
+        </strong>
+        </p>
     </div>
-    <% else %>
-        <table class="table table-hover table-striped border">
-            <thead>
-                <tr>
-                    <th>Food</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
 
-            <tbody>
-                <% @items_to_buy.each do |item| %>
+    <div id="foods">
+        <% if @items_to_buy.empty? %>
+        <div class="alert alert-info text-center">
+            <p class="mb-0">Your shopping list is empty.</p>
+        </div>
+        <% else %>
+            <table class="table table-hover table-striped border">
+                <thead>
                     <tr>
-                        <td><%= item[:food].name %></td>
-                        <td><%= item[:quantity] %></td>
-                        <td>$<%= item[:quantity] * item[:unit_price] %></td>
+                        <th>Food</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
                     </tr>
-                <% end %>
-            </tbody>
-        </table>
-    <% end %>
+                </thead>
+
+                <tbody>
+                    <% @items_to_buy.each do |item| %>
+                        <tr>
+                            <td><%= item[:food].name %></td>
+                            <td><%= item[:quantity] %></td>
+                            <td>$<%= item[:quantity] * item[:unit_price] %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <% end %>
+    </div>
 </div>
