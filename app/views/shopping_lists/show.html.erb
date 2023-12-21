@@ -1,0 +1,21 @@
+<h1>Your Shopping List</h1>
+<p>Amount of food items to buy: <%= @items_to_buy.count %></p>
+<p>Total value of food needed: $<%= @items_to_buy.sum { |item| item[:quantity] * item[:unit_price] } %></p>
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items_to_buy.each do |item| %>
+      <tr>
+        <td><%= item[:food].name %></td>
+        <td><%= item[:quantity] %></td>
+        <td>$<%= item[:quantity] * item[:unit_price] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
