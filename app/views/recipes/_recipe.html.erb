@@ -15,12 +15,10 @@
       <%= recipe.cooking_time %>
     </p>
 
-    <p>
-      <details>
-        <summary>Description:</summary>
-        <p> <%= recipe.description %> </p>
-      </details>
-    </p>
+    <details>
+      <summary>Description:</summary>
+      <p style="max-width: 400px;"> <%= recipe.description %> </p>
+    </details>
   </div>
     
   <div>
@@ -28,8 +26,11 @@
     <%= form_with(model: recipe) do |form| %>
       <div class="custom-control custom-switch">
         <%= form.check_box :public, class: "custom-control-input",
-                                    id: "publicswitch", onchange: "submitForm(this);" %>
-        <label class="custom-control-label" for="publicswitch"> Public: </label>  
+                                    id: "publicswitch",
+                                    onchange: "submitForm(this);" %>
+        <label class="custom-control-label" for="publicswitch">
+          Public: <%= recipe.public ? "Yes" : "No" %>
+        </label>  
       </div>
     <% end %>
   <% end %>

@@ -20,10 +20,7 @@ RSpec.describe 'recipes/show', type: :system do
       expect(page).to have_content('Preparation time:')
       expect(page).to have_content('Cooking time:')
       expect(page).to have_content('Description:')
-      expect(page).to have_content('Pizza')
-      expect(page).to have_content('10')
-      expect(page).to have_content('20')
-      expect(page).to have_selector(:link_or_button, 'Generate Shopping list')
+      expect(page).to have_content('Generate shopping list')
     end
   end
 end

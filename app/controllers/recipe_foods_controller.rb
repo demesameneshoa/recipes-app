@@ -25,10 +25,10 @@ class RecipeFoodsController < ApplicationController
   def update
     respond_to do |format|
       if @recipe_food.update(recipe_food_params)
-        flash[:success] = 'Recipe was successfully updated.'
+        flash[:info] = 'Recipe was successfully updated.'
         format.html { redirect_to recipe_food_path(@recipe_food) }
       else
-        flash[:danger] = 'Recipe was not updated.'
+        flash[:danger] = 'Coulnd\'t update recipe...'
         format.html { render :edit, status: :unprocessable_entity }
       end
     end

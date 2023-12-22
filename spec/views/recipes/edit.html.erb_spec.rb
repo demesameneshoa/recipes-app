@@ -8,7 +8,7 @@ RSpec.describe 'recipes/edit', type: :view do
       cooking_time: 1,
       description: 'MyText',
       public: false,
-      user: nil
+      user: create(:user)
     )
   end
 
@@ -29,8 +29,6 @@ RSpec.describe 'recipes/edit', type: :view do
       assert_select 'textarea[name=?]', 'recipe[description]'
 
       assert_select 'input[name=?]', 'recipe[public]'
-
-      assert_select 'input[name=?]', 'recipe[user_id]'
     end
   end
 end

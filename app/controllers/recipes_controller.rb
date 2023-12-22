@@ -15,6 +15,11 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
+    unless user_signed_in?
+      flash[:warning] = 'Please Sing in or Sign up to see full details! 😊'
+      redirect_to root_path
+    end
+
     @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     @recipe_food = @recipe.recipe_foods.includes(:food)
   end
@@ -33,9 +38,8 @@ class RecipesController < ApplicationController
     @recipe.user = current_user
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to recipes_path, notice: 'Recipe was successfully created.' }
-        # format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
-        # format.json { render :show, status: :created, location: @recipe }
+        flash[:success] = 'Recipe was successfully created.'
+        format.html { redirect_to recipes_path }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
@@ -47,9 +51,11 @@ class RecipesController < ApplicationController
   def update
     respond_to do |format|
       if @recipe.update(recipe_params)
-        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.' }
+        flash[:info] = 'Recipe was successfully updated.'
+        format.html { redirect_to recipe_url(@recipe) }
         format.json { render :show, status: :ok, location: @recipe }
       else
+        flash[:danger] = 'Coulnd\'t update recipe...'
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
@@ -63,7 +69,8 @@ class RecipesController < ApplicationController
     @recipe.recipe_foods.destroy_all
 
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully deleted.' }
+      flash[:info] = 'Recipe was successfully deleted.'
+      format.html { redirect_to recipes_url }
       format.json { head :no_content }
     end
   end

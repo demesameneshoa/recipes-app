@@ -11,27 +11,27 @@
     <% else %>
     
     <ul class="list-unstyled pt-4">
-    <% @recipes.each_with_index do |recipe, index| %>
-      <li class="text-start d-flex border border-secondary rounded p-2 my-4">
-        <div class="col-4 ">
+        <% @recipes.each_with_index do |recipe, index| %>
+          <li class="text-start d-flex border border-secondary rounded p-2 my-4">
+            <div class="col-4 ">
 
-          <div class="col-span-2 my-auto">
-            <%= link_to recipe_path(id: recipe.id) do %>    
-              <p class="fs-4">Recipe <%= index + 1 %></p>             
-            <% end %>              
-          </div>          
-          <p>Name: <%= recipe.name %></p>
-          <%= button_to 'Remove', recipe_path(recipe), method: :delete,
-          class: "btn btn-primary" %>
+              <div class="col-span-2 my-auto">
+                <%= link_to recipe_path(id: recipe.id), style: "text-decoration: none;" do %>    
+                  <h4 class="fs-4 text-warning">Recipe <%= index + 1 %></h4>             
+                <% end %>              
+              </div>          
+              <p>Name: <%= recipe.name %></p>
+              <%= button_to "Remove", recipe_path(recipe), method: :delete,
+                                                           class: "btn btn-outline-danger" %>
 
-        </div>
-        <div class="col-8 p-3">
-          Description: <%= recipe.description %>
-        </div>
-      </li>
+            </div>
+            <div class="col-8 p-3">
+              <strong>Description:</strong> <%= truncate(recipe.description, length: 100) %>
+            </div>
+          </li>
+        <% end %>
     <% end %>
-    <% end %>
-  </ul>
+    </ul>
   </div>
 </main>
 

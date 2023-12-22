@@ -48,9 +48,9 @@
 
   <% if @recipe.user.id == current_user.id %>
     <%= link_to "Edit this recipe", edit_recipe_path(@recipe),
-                class: "btn btn-outline-warning mb-1" %>
+                class: "btn btn-outline-warning mb-3" %>
     <%= button_to "Delete recipe", @recipe, method: :delete,
-                                            class: "btn btn-outline-danger" %>
+                                            class: "btn btn-outline-danger mb-4" %>
   <% end %>
 </div>
 </div>
