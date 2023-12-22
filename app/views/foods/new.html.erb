@@ -1,0 +1,11 @@
+<h2 class="text-muted text-center mb-4">Add a new item to inventory</h2>
+<div style="max-width: 400px; margin: 0 auto;" class="mb-3">
+
+  <%= render "form", food: @food %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back to food list", foods_path, class: "btn btn-secondary px-2 py-1" %>
+  </div>
+</div>

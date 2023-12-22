@@ -1,0 +1,10 @@
+<h1 class="text-muted text-center mb-4">New recipe</h1>
+<div style="max-width: 400px; margin: 0 auto;" class="mb-3">
+  <%= render "form", recipe: @recipe %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back to recipes list", recipes_path, class: "btn btn-secondary px-2 py-1" %>
+  </div>
+</div>

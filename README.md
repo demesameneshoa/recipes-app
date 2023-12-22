@@ -1,43 +1,13 @@
 <a name="readme-top"></a>
 
-<!--
-!!! IMPORTANT !!!
-This README is an example of how you could professionally present your codebase. 
-Writing documentation is a crucial part of your work as a professional software developer and cannot be ignored. 
-
-You should modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-OPTIONAL SECTIONS:
-- FAQ
-
-After you're finished please remove all the comments and instructions!
-
-For more information on the importance of a professional README for your repositories: https://github.com/microverseinc/curriculum-transversal-skills/blob/main/documentation/articles/readme_best_practices.md
--->
-
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
-
-  <h3><b>Microverse README Template</b></h3>
-
+    <img src="app/assets/images/recipes-app-logo-png-large.png" alt="logo" width="350"  height="auto" />
+    <h1><b>My Recipes App</b></h1>
 </div>
 
-<!-- TABLE OF CONTENTS -->
+---
+
+<!-- ! TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
 
@@ -45,247 +15,269 @@ For more information on the importance of a professional README for your reposit
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
   - [Install](#install)
   - [Usage](#usage)
   - [Run tests](#run-tests)
-  - [Deployment](#deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-<!-- PROJECT DESCRIPTION -->
+---
 
-# 📖 [your_project_name] <a name="about-project"></a>
+<!-- ! PROJECT DESCRIPTION -->
 
-> Describe your project in 1 or 2 sentences.
+# 📖 My Recipes app <a name="about-project"></a>
 
-**[your_project__name]** is a...
+> This is a web application that allows users to register and start managing recipes. Users can create, edit, and delete recipes. In addition, it is also possible to create a food inventory and take ingredients from it when creating a recipe. The application will also allow you to generate a shopping list based on the recipes you have created and the food items needed to make them.
+> For those who do not wish to register, you can see the public recipes posted by other users.
+
+#### Learning objectives
+
+- Use Ruby gems as a software packages system.
+- Install Ruby on Rails framework.
+- Understand Rails RESTful design and router.
+- Use controllers to handle requests and render empty views.
+- Understand Rails naming conventions.
+- Use params from browser requests in a safe way.
+- Use preprocessed HTML file with embedded Ruby code.
+- Use layouts and templates for shared content.
+- Use database migration files to maintain database schema.
+- Use validations for models.
+- Secure app from n+1 problems.
+- Understand what ORM is.
+- Write SQL queries with ActiveRecord.
+- Set up associations between models.
+- Build a web app that requires the user to log in.
+- Describe the difference between authorization and authentication.
+- Use Devise gem for authentication.
+- Understand how sessions and cookies can support authentication.
+- Write unit tests using Rspec
+- Write integration tests with capybara gem
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
-
-<details>
-  <summary>Client</summary>
   <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li>
+      <a href="https://www.ruby-lang.org/en/">
+        <img src="https://skillicons.dev/icons?i=ruby"/> Ruby
+      </a>
+    </li>
+    <li>
+      <a href="https://rubyonrails.org/">
+        <img src="https://skillicons.dev/icons?i=rails"/> Rails
+      </a>
+    </li>
+    <li>
+      <a href="https://www.postgresql.org/">
+        <img src="https://skillicons.dev/icons?i=postgresql"/> PostgreSQL
+      </a>
+    </li>
+    <li>
+      <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/">
+        <img src="https://skillicons.dev/icons?i=bootstrap"/> Bootstrap
+      </a>
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
+        <img src="https://skillicons.dev/icons?i=css"/> CSS
+      </a>
+    </li>
+    <li>
+      <a href="https://www.w3schools.com/html/">
+        <img src="https://skillicons.dev/icons?i=html"/> HTML5
+      </a>
+    </li>
   </ul>
-</details>
 
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-  </ul>
-</details>
+#### Highlighted Gems
 
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-  </ul>
-</details>
+- [Devise](https://github.com/heartcombo/devise/wiki)
 
-<!-- Features -->
+---
 
-### Key Features <a name="key-features"></a>
+### :key: Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
+- Users can sign up and log in to the application.
+- Users can create, edit, and delete recipes.
+- Users can create a food inventory and take ingredients from it when creating a recipe.
+- Users can generate a shopping list based on the recipes they have created and the food items needed to make them.
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+---
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LIVE DEMO -->
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-> Add a link to your deployed project.
-
-- [Live Demo Link](https://google.com)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
+<!-- ! GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
-
-> Describe how a new developer could make use of your project.
 
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need:
+To run this project you need:
 
-<!--
-Example command:
-
-```sh
- gem install rails
-```
- -->
+- Have Ruby installed. If you need to install Ruby, follow the instructions on the [official page](https://www.ruby-lang.org/en/documentation/installation/).
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-<!--
 Example commands:
 
-```sh
+- With SSH:
+
+```bash
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  git clone git@github.com:demesameneshoa/recipes-app.git
 ```
---->
 
-### Install
+- With HTTPS:
 
-Install this project with:
-
-<!--
-Example command:
-
-```sh
-  cd my-project
-  gem install
+```bash
+  cd my-folder
+  git clone https://github.com/demesameneshoa/recipes-app.git
 ```
---->
 
-### Usage
+- With GitHub CLI:
 
-To run the project, execute the following command:
-
-<!--
-Example command:
-
-```sh
-  rails server
+```bash
+  cd my-folder
+  gh repo clone demesameneshoa/recipes-app
 ```
---->
 
-### Run tests
+### Install <a name="install"></a>
 
-To run tests, run the following command:
+Go to the project directory:
 
-<!--
-Example command:
-
-```sh
-  bin/rails test test/models/article_test.rb
+```bash
+ cd recipes-app
 ```
---->
 
-### Deployment
+Before running the program, verify that you have Ruby on Rails installed on your OS by running the following command:
 
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
+```bash
+ rails --version
 ```
- -->
+
+It should show you the version of Ruby On Rails ​​installed. If this does not happen and only an error message is displayed, you should verify your installation or install Ruby on Rails from scratch.
+
+[Download and Install Ruby on Rails](https://guides.rubyonrails.org/getting_started.html)
+
+Once you have verified that you have Ruby on Rails installed, run the following command to install the necessary gems:
+
+```bash
+ bundle install
+```
+
+After installing the gems, run the following command to create the database:
+
+```bash
+ rails db:create
+```
+
+Then run the following command to migrate the database:
+
+```bash
+ rails db:migrate
+```
+
+### Usage <a name="usage"></a>
+
+Run the following command inside the project folder to start the application:
+
+```bash
+ rails s
+```
+
+This will start the application on your local server. You can now open your browser and go to http://localhost:3000/ to see the application running.
+
+### Run tests <a name="run-tests"></a>
+
+To execute the tests, run the following command inside the project folder (root):
+
+```bash
+ bundle exec rspec
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- AUTHORS -->
+---
+
+<!-- ! AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
+👤 **Demes Ameneshoa**
 
-👤 **Author1**
+- GitHub: [@demesameneshoa](https://github.com/demesameneshoa)
+- LinkedIn: [@demesameneshoa](https://www.linkedin.com/in/demesameneshoa/)
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+👤 **Arthur Iturres**
 
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@ITurres](https://github.com/ITurres)
+- LinkedIn: [Arthur Emanuel G. Iturres](https://www.linkedin.com/in/arturoemanuelguerraiturres/)
+- Angellist / Wellfound: [Arturo (Arthur) Emanuel Guerra Iturres](https://wellfound.com/u/arturo-arthur-emanuel-guerra-iturres)
+- Youtube: [Arturo Emanuel Guerra Iturres - Youtube Channel](https://www.youtube.com/channel/UC6GFUFHOtBS9mOuI8EJ6q4g)
+- Portfolio: [Arthur Iturres - Portfolio](https://iturres.github.io/iturres-reactive-portfolio/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- FUTURE FEATURES -->
+---
+
+<!-- ! FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-> Describe 1 - 3 features you will add to the project.
-
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- [ ] Allow users to upload images for their recipes.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
+---
+
+<!-- ! CONTRIBUTING -->
 
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/demesameneshoa/recipes-app/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- SUPPORT -->
+---
+
+<!-- ! SUPPORT -->
 
 ## ⭐️ Show your support <a name="support"></a>
 
-> Write a message to encourage readers to support your project
-
-If you like this project...
+Give a ⭐ if you liked this project!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ACKNOWLEDGEMENTS -->
+---
+
+<!-- ! ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> Give credit to everyone who inspired your codebase.
-
-I would like to thank...
+I thank the **Code Reviewers** for their advice and time 🏆
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- FAQ (optional) -->
+---
 
-## ❓ FAQ (OPTIONAL) <a name="faq"></a>
-
-> Add at least 2 questions new developers would ask when they decide to use your project.
-
-- **[Question_1]**
-
-  - [Answer_1]
-
-- **[Question_2]**
-
-  - [Answer_2]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
+<!-- ! LICENSE -->
 
 ## 📝 License <a name="license"></a>
 
 This project is [MIT](./LICENSE) licensed.
 
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---

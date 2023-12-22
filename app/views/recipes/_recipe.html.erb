@@ -1,0 +1,44 @@
+<div id="<%= dom_id recipe %>" class="m-2">
+<h2 class="text-center text-muted">
+  <%= recipe.name %>
+</h2>
+<div class="d-flex justify-content-around p-4" 
+          style="max-width: 800px; margin: 0 auto;">
+  <div>
+    <p>
+      <strong>Preparation time:</strong>
+      <%= recipe.preparation_time %>
+    </p>
+
+    <p>
+      <strong>Cooking time:</strong>
+      <%= recipe.cooking_time %>
+    </p>
+
+    <details>
+      <summary>Description:</summary>
+      <p style="max-width: 400px;"> <%= recipe.description %> </p>
+    </details>
+  </div>
+    
+  <div>
+  <% if recipe.user == current_user %>
+    <%= form_with(model: recipe) do |form| %>
+      <div class="custom-control custom-switch">
+        <%= form.check_box :public, class: "custom-control-input",
+                                    id: "publicswitch",
+                                    onchange: "submitForm(this);" %>
+        <label class="custom-control-label" for="publicswitch">
+          Public: <%= recipe.public ? "Yes" : "No" %>
+        </label>  
+      </div>
+    <% end %>
+  <% end %>
+    <script>
+      function submitForm(checkbox) {
+        checkbox.form.submit();
+      }
+    </script>
+  </div>
+</div>
+</div>

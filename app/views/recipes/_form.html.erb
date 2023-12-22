@@ -1,0 +1,50 @@
+  <%= form_with(model: recipe) do |form| %>
+    <% if recipe.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+        <ul>
+          <% recipe.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.text_field :name,
+                          placeholder: "Recipe Name",
+                          aria: { label: "Recipe Name" },
+                          class: "form-control mb-2" %>
+    </div>
+
+    <div class="field">
+    <%= form.text_field :preparation_time,
+                        placeholder: "Preparation Time",
+                        aria: { label: "Preparation Time" },
+                        class: "form-control mb-2" %>
+    </div>
+
+    <div class="field">
+    <%= form.text_field :cooking_time,
+                        placeholder: "Cooking Time",
+                        aria: { label: "Cooking Time" },
+                        class: "form-control mb-2" %>
+    </div>
+
+    <div class="field">
+    <%= form.text_area :description,
+                        placeholder: "Description",
+                        aria: { label: "Description" },
+                        class: "form-control mb-2" %>
+    </div>
+
+    <div class="custom-control custom-switch">
+        <%= form.check_box :public, class: "custom-control-input", id:"publicswitch" %>
+        <label class="custom-control-label" for="publicswitch"> Public: </label>
+    </div>
+    </br>             
+    <div class="actions">
+      <%= form.submit "Save", class: "btn btn-success w-100" %>
+    </div>
+  <% end %>

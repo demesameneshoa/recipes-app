@@ -1,0 +1,32 @@
+<main class='container mt-4' style="max-width: 900px;">
+
+  <div id="foods">
+    <div class="p-2" style="text-align: end;">
+      <%= link_to "New food", new_food_path, class: "btn btn-outline-primary m-1" %>
+    </div>
+    <% if @foods.empty? %>
+      <div class="alert alert-info text-center">
+        <p class="mb-0">There are no foods in your inventory.</p>
+      </div>
+    <% else %>
+      <table class="table table-hover table-striped border">
+        <thead>
+          <tr>
+            <th>Food</th>
+            <th>Measurement unit</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @foods.each do |food| %>
+            <%= render food %>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</main>
+

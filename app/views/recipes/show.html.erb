@@ -1,0 +1,56 @@
+<div id="recipe-detail">
+<%= render @recipe %>
+
+<div class="d-flex justify-content-around p-3 m-1">
+  <%= link_to "Generate shopping list", shopping_list_path, method: :get, class: "btn btn-outline-success" %>
+  <% if @recipe.user == current_user %>
+    <%= link_to "Add ingredient", new_recipe_food_path(recipe_id: @recipe.id), class: "btn btn-outline-success" %>
+  <% end %>
+</div>
+
+<div class="text-center m-1">
+<hr>
+
+<div id="foods">
+  <% if @recipe_food.empty? %>
+    <div class="alert alert-info text-center">
+      <p class="mb-0">There are no ingredients for this recipe</p>
+    </div>
+  <% else %>
+    <table class="table table-hover table-striped border">
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @recipe_food.each do |ingredient| %>
+          <tr>
+            <td><%= ingredient.food.name %></td>
+            <td><%= "#{ingredient.quantity}#{ingredient.food.measurement_unit}" %></td>
+            <td><%= "$#{ingredient.food.price * ingredient.quantity}" %></td>
+            <% if @recipe.user == current_user %>
+              <td><%= link_to "Modify", edit_recipe_food_path(ingredient), class: "btn btn-ountline-danger", method: :update, data: { "turbo-method": :update } %></td>
+              <td><%= link_to "Delete", ingredient, class: "btn btn-ountline-danger", method: :delete, data: { "turbo-method": :delete } %></td>
+            <% else %>
+             <td>No actions</td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+
+  <% if @recipe.user.id == current_user.id %>
+    <%= link_to "Edit this recipe", edit_recipe_path(@recipe),
+                class: "btn btn-outline-warning mb-3" %>
+    <%= button_to "Delete recipe", @recipe, method: :delete,
+                                            class: "btn btn-outline-danger mb-4" %>
+  <% end %>
+</div>
+</div>

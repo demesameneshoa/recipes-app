@@ -1,0 +1,45 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <%= link_to root_path, class: "navbar-brand" do %>
+            <img src="<%= asset_path("recipes-app-logo-png-small.png") %>"
+                            width="auto" height="50" alt="recipe app logo">
+        <% end %>
+
+
+        <div class="p-1 text-center d-flex align-items-center flex-wrap">
+            <ul class="nav font-weight-bold" style="font-size: 0.9rem;">
+                <li class="nav-item">
+                    <%= link_to "Public-recipes", root_path,
+                                class: "nav-link text-danger pl-0" %>
+                </li>
+
+                <% if user_signed_in? %>
+                    <li class="nav-item">
+                        <%= link_to "My-recipes", recipes_path,
+                                    class: "nav-link text-danger" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Food-List", foods_path,
+                                    class: "nav-link text-danger" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Shopping-List", shopping_list_path(id: "show"),
+                                    class: "nav-link text-danger" %>
+                    </li>
+                <% end %>
+            </ul>
+
+            <% if user_signed_in? %>
+                <%= button_to("Sign Out", destroy_user_session_path,
+                              method: :delete,
+                              class: "btn btn-outline-success ml-2 px-2 py-1",
+                              style: "font-size: 0.9rem;") %>
+                <% else %>
+                <%= button_to("Sign in", new_user_session_path,
+                              method: :get,
+                              class: "btn btn-outline-success ml-2 px-2 py-1",
+                              style: "font-size: 0.9rem;") %>
+            <% end %>
+        </div>
+    </div>
+</nav>

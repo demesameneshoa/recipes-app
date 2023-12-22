@@ -1,0 +1,37 @@
+<main class='container mt-4' style="max-width: 900px;">
+
+  <div id="recipes">
+    <div class="p-2" style="text-align: end;">
+      <%= link_to "New Recipe", new_recipe_path, class: "btn btn-outline-primary m-1" %>
+    </div>
+    <% if @recipes.empty? %>
+      <div class="alert alert-info text-center">
+        <p class="mb-0">There are no recipes to show.</p>
+      </div>
+    <% else %>
+    
+    <ul class="list-unstyled pt-4">
+        <% @recipes.each_with_index do |recipe, index| %>
+          <li class="text-start d-flex border border-secondary rounded p-2 my-4">
+            <div class="col-4 ">
+
+              <div class="col-span-2 my-auto">
+                <%= link_to recipe_path(id: recipe.id), style: "text-decoration: none;" do %>    
+                  <h4 class="fs-4 text-warning">Recipe <%= index + 1 %></h4>             
+                <% end %>              
+              </div>          
+              <p>Name: <%= recipe.name %></p>
+              <%= button_to "Remove", recipe_path(recipe), method: :delete,
+                                                           class: "btn btn-outline-danger" %>
+
+            </div>
+            <div class="col-8 p-3">
+              <strong>Description:</strong> <%= truncate(recipe.description, length: 100) %>
+            </div>
+          </li>
+        <% end %>
+    <% end %>
+    </ul>
+  </div>
+</main>
+
