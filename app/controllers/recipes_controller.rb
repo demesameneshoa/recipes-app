@@ -15,6 +15,11 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
+    unless user_signed_in?
+      flash[:warning] = 'Please Sing in or Sign up to see full details! 😊'
+      redirect_to root_path
+    end
+
     @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     @recipe_food = @recipe.recipe_foods.includes(:food)
   end
